@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// authentication routes
+Auth::routes();
+
+// first page
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
+// home page
 Route::get('/home', 'HomeController@index')->name('home');
+
+// registered user verification route
+Route::get('/register/verify/{confirmationCode}', 'Auth\RegisterController@verifyRegistration');

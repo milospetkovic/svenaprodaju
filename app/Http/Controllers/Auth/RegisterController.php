@@ -102,10 +102,10 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all(), $confirmation_code)));
 
-//        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
-//            $message->to($request->all()['email'])
-//                ->subject('Verify your email address');
-//        });
+        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
+            $message->to($request->all()['email'])
+                ->subject('Verify your email address');
+        });
 
         flash(trans("ActionSuccess"),"success");
 
@@ -154,5 +154,11 @@ class RegisterController extends Controller
         }
 
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    }
+
+    public function verifyRegistration(Request $request, $confirmationCode)
+    {
+        $data['confirmation_code'] = $confirmationCode;
+        return view('auth.verify_registration', $data);
     }
 }
