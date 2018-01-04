@@ -70,8 +70,8 @@ class RegisterController extends Controller
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
-            'address' => $data['address'],
-            'telephone' => $data['telephone'],
+            'address' => ($data['address'] ? $data['address'] : ''),
+            'telephone' => ($data['telephone'] ? $data['telephone'] : ''),
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'confirmation_code' => $confirmation_code
@@ -102,10 +102,10 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all(), $confirmation_code)));
 
-        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
-            $message->to($request->all()['email'])
-                ->subject('Verify your email address');
-        });
+//        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
+//            $message->to($request->all()['email'])
+//                ->subject('Verify your email address');
+//        });
 
         flash(trans("ActionSuccess"),"success");
 
