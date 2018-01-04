@@ -85,6 +85,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+        flash('Message 1');
+        flash('Message 2')->important();
         return view('auth.register');
     }
 
