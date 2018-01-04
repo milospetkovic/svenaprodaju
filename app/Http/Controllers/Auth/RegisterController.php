@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\Session\Flash;
 
 class RegisterController extends Controller
 {
@@ -54,7 +56,7 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:255',
             //'email' => 'required|string|email|max:255|unique:users',
             'email' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:1|confirmed',
         ]);
     }
 
@@ -64,7 +66,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data, $confirmation_code=null)
     {
         return User::create([
             'first_name' => $data['first_name'],
@@ -73,7 +75,7 @@ class RegisterController extends Controller
             'telephone' => $data['telephone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'confirmation_code' => str_random(30)
+            'confirmation_code' => $confirmation_code
         ]);
     }
 
@@ -97,10 +99,24 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        $confirmation_code = str_random(30);
 
-        $this->guard()->login($user);
+        event(new Registered($user = $this->create($request->all(), $confirmation_code)));
 
+//        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
+//            $message->to($request->all()['email'])
+//                ->subject('Verify your email address');
+//        });
+
+        flash(trans("ActionSuccess"),"success");
+
+        //Flash::message('Thanks for signing up! Please check your email.');
+
+//        return Redirect::home();
+
+
+//        $this->guard()->login($user);
+//
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
