@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
-use Symfony\Component\HttpFoundation\Session\Flash;
 
 class RegisterController extends Controller
 {
