@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+//use Illuminate\Support\Facades\Schema;
+//use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddConfirmAndConfirmCodeToTheUser extends Migration
@@ -13,7 +13,7 @@ class AddConfirmAndConfirmCodeToTheUser extends Migration
      */
     public function up()
     {
-        // up up
+        // up up up
     }
 
     /**
