@@ -13,7 +13,7 @@ class AddConfirmAndConfirmCodeToTheUser extends Migration
      */
     public function up()
     {
-        //
+        // up up
     }
 
     /**
