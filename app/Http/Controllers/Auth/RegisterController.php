@@ -113,7 +113,7 @@ class RegisterController extends Controller
 
         //Flash::message('Thanks for signing up! Please check your email.');
 
-        return Redirect::home();
+//        return Redirect::home();
 
 
 //        $this->guard()->login($user);
