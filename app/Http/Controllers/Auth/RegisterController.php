@@ -109,7 +109,14 @@ class RegisterController extends Controller
 //                ->subject('Verify your email address');
 //        });
 
-        Mail::send('register_verify', ['confirmation_code' => $confirmation_code]);
+        Mail::send('register_verify', ['confirmation_code' => $confirmation_code], function ($message)
+        {
+
+            $message->from('milos@localhost', 'MP');
+            $message->to('root@localhost');
+            $message->subject('Email verifikacija nakon registracije');
+
+        });
 
         flash(trans("ActionSuccess"),"success");
 
