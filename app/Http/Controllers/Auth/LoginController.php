@@ -71,6 +71,19 @@ class LoginController extends Controller
     }
 
     /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request, $request->filled('remember'))
+        );
+    }
+
+    /**
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,8 +92,10 @@ class LoginController extends Controller
     protected function sendLoginResponse(Request $request)
     {
         if (auth()->user()->confirmed != User::STATUS_CONFIRMED) {
+            $this->logout($request);
             flash("Niste potvrdili verifikaciju putem unete email adrese prilikom registracije. Proverite vas email.");
-            return redirect()->intended($this->redirectPath());
+            //return redirect()->intended($this->redirectPath());
+            return $this->sendFailedLoginResponse($request);
         }
 
         $request->session()->regenerate();
@@ -90,5 +105,17 @@ class LoginController extends Controller
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath());
     }
+
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+//    protected function credentials(Request $request)
+//    {
+//        return $request->only($this->username(), 'password', 'confirmed');
+//    }
 
 }
