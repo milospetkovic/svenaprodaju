@@ -10,10 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    @yield('pagehead')
+    @yield('css')
+
+    <!-- CDN styles -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }} />
+    <link rel="stylesheet" href="{{ asset('css/elitasoft.css') }} />
+
+    @stack('vue-styles')
+
 </head>
 <body>
+
+    @include('flash::message')
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -70,11 +87,24 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
     </div>
 
+    @yield('content')
+
     <!-- Scripts -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/elitasoft.js') }}></script>
+
+    @yield('pagescript')
+    @yield('scripts')
+    @stack('vue-scripts')
+
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
+
 </body>
 </html>

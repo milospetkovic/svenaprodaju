@@ -104,21 +104,14 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all(), $confirmation_code)));
 
-//        Mail::send('email.register_verify', $confirmation_code, function($message, $request) {
-//            $message->to($request->all()['email'])
-//                ->subject('Verify your email address');
-//        });
-
-        Mail::send('register_verify', ['confirmation_code' => $confirmation_code], function ($message)
+        Mail::send('verify_registration', ['confirmation_code' => $confirmation_code], function ($message)
         {
             $message->from('milos@localhost', 'MP');
             $message->to('root@localhost');
             $message->subject('Email verifikacija nakon registracije');
         });
 
-        flash(trans("ActionSuccess"),"success");
-
-        //Flash::message('Thanks for signing up! Please check your email.');
+        flash("Hvala na registraciji! Molimo Vas da proverite email.");
 
         return redirect('/register/werconfirmation');
 
