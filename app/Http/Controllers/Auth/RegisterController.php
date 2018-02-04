@@ -157,13 +157,34 @@ class RegisterController extends Controller
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
     }
 
-    public function verifyRegistration(Request $request, $confirmationCode)
+    public function verifyRegistration($confirmation_code)
     {
-        $data['confirmation_code'] = $confirmationCode;
-        return view('auth.verify_registration', $data);
+//        $data['confirmation_code'] = $confirmationCode;
+//        return view('auth.verify_registration', $data);
+
+        if( ! $confirmation_code)
+        {
+            return redirect('/home');
+        }
+
+        $user = User::where('confirmation_code',$confirmation_code)->first();
+
+        if ( ! $user)
+        {
+            return redirect('/home');
+        }
+
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
+        $user->save();
+
+        flash("Uspesna verifikacija! Bicete automatski logovani.");
+
+        //return Redirect::route('login_path');
     }
 
     public function waitingEmailRegistrationConfirmation(Request $request) {
         return view('auth.waiting_email_registration_confirmation');
     }
+
 }
