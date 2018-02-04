@@ -27,3 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // registered user verification route
 Route::get('/register/verify/{confirmationCode}', 'Auth\RegisterController@verifyRegistration');
+
+// message/info for fresh registered user to check/confirm email after registration
+Route::get('/register/werconfirmation', 'Auth\RegisterController@waitingEmailRegistrationConfirmation');

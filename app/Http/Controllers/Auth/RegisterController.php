@@ -85,8 +85,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        flash('Message 1');
-        flash('Message 2')->important();
+//        flash('Message 1');
+//        flash('Message 2')->important();
         return view('auth.register');
     }
 
@@ -111,24 +111,21 @@ class RegisterController extends Controller
 
         Mail::send('register_verify', ['confirmation_code' => $confirmation_code], function ($message)
         {
-
             $message->from('milos@localhost', 'MP');
             $message->to('root@localhost');
             $message->subject('Email verifikacija nakon registracije');
-
         });
 
         flash(trans("ActionSuccess"),"success");
 
         //Flash::message('Thanks for signing up! Please check your email.');
 
-//        return Redirect::home();
-
+        return redirect('/register/werconfirmation');
 
 //        $this->guard()->login($user);
 //
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+//        return $this->registered($request, $user)
+//            ?: redirect($this->redirectPath());
     }
 
     /**
@@ -171,5 +168,9 @@ class RegisterController extends Controller
     {
         $data['confirmation_code'] = $confirmationCode;
         return view('auth.verify_registration', $data);
+    }
+
+    public function waitingEmailRegistrationConfirmation(Request $request) {
+        return view('auth.waiting_email_registration_confirmation');
     }
 }
