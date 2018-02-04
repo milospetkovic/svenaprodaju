@@ -10,6 +10,11 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Flag for confirmed user (via email verification after successful registration)
+     */
+    const STATUS_CONFIRMED = 1;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
