@@ -159,9 +159,6 @@ class RegisterController extends Controller
 
     public function verifyRegistration($confirmation_code)
     {
-//        $data['confirmation_code'] = $confirmationCode;
-//        return view('auth.verify_registration', $data);
-
         if( ! $confirmation_code)
         {
             return redirect('/home');
@@ -178,7 +175,11 @@ class RegisterController extends Controller
         $user->confirmation_code = null;
         $user->save();
 
-        flash("Uspesna verifikacija! Bicete automatski logovani.");
+        flash("Uspesna verifikacija! Uspesno ste logovani u sistem.");
+
+        Auth::login($user);
+
+        return redirect('/home');
 
         //return Redirect::route('login_path');
     }
