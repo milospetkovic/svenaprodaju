@@ -11,12 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js(['resources/assets/js/app.js',
-        'resources/assets/js/bootstrap.js',
-        'resources/assets/js/elitasoft.js,',
-        'resources/assets/vendor/inspinia/js/plugins/toastr/toastr.min.js'],
-    'public/js/all.js');
+mix.copy('resources/assets/js/app.js', 'public/js/');
+mix.copy('resources/assets/js/bootstrap.js', 'public/js/');
+mix.copy('resources/assets/js/elitasoft.js', 'public/js/');
 
-mix.styles(['resources/assets/vendor/inspinia/css/plugins/toastr/toastr.min.css'],
-        'public/css/all.css');
-mix.sass('resources/assets/sass/app.scss', 'public/css/all.scss');
+
+mix.copy('resources/assets/css/dashboard.css', 'public/css/');
+
+
