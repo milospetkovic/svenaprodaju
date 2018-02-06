@@ -19,7 +19,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/dashboard.css" />
-        <link rel="stylesheet" href="/css/app.css" />
+        {{--<link rel="stylesheet" href="/css/app.css" />--}}
         <link rel="stylesheet" href="/css/elitasoft.css" />
 
         @stack('vue-styles')
@@ -41,7 +41,7 @@
                     <div class="navbar-header">
                         <div id="navbar" class="navbar-collapse collapse">
                             @if (Route::has('login'))
-                                <ul class="nav navbar-nav navbar-right">
+                                <ul class="nav navbar-nav navbar-right pull-right">
                                     @auth
                                         <li><a href="{{ url('/home') }}">Home</a></li>
                                     @else
