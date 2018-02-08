@@ -32,8 +32,9 @@ Route::get('/register/verify/{confirmationCode}', 'Auth\RegisterController@verif
 Route::get('/register/werconfirmation', 'Auth\RegisterController@waitingEmailRegistrationConfirmation');
 
 // create advertisement
-Route::get('/oglasi/create', function () {
-    return view('advertisement.create');
-})->name('advertisementcreate');
+Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('advertisementcreate');
+//Route::get('/oglasi/create', function () {
+//    return view('advertisement.create');
+//})->name('advertisementcreate');
 
 
