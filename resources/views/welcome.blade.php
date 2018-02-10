@@ -72,14 +72,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-3 col-md-2 sidebar">
-                        @if (auth()->user())
+                        {{-- @if (auth()->user()) --}}
                             <ul class="nav nav-sidebar">
                                 {{--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>--}}
                                 <li><a href="{{ route('advertisementcreate') }}">Postavi oglas</a></li>
                                 <li><a href="#">Analytics</a></li>
                                 <li><a href="#">Export</a></li>
                             </ul>
-                        @endif
+                    {{-- @endif --}}
                     </div>
 
                     @yield('content')
@@ -88,19 +88,19 @@
             </div>
         </div>
 
-        <script src="//code.jquery.com/jquery.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script src="/js/app.js" type="text/javascript"></script>
-        <script src="/js/elitasoft.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="/js/app.js" type="text/javascript"></script>
+<script src="/js/elitasoft.js" type="text/javascript"></script>
 
-        @yield('pagescript')
-        @yield('scripts')
-        @stack('vue-scripts')
+@yield('pagescript')
+@yield('scripts')
+@stack('vue-scripts')
 
-        <script>
-            $('#flash-overlay-modal').modal();
-        </script>
+<script>
+$('#flash-overlay-modal').modal();
+</script>
 
-    </body>
+</body>
 </html>

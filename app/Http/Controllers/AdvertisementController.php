@@ -14,7 +14,8 @@ class AdvertisementController extends Controller
         if (auth()->user()) {
             return view('advertisement.create');
         } else {
-            return view('auth.login');
+            $data['login_warning'] = 'Morate biti ulogovani da biste kreirali oglas';
+            return view('auth.login', $data);
         }
     }
 }
