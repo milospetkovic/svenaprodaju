@@ -15,7 +15,7 @@ class CreateAdvertisementTable extends Migration
     {
         Schema::create('advertisement', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable(false);
+            $table->unsignedInteger('user_id')->nullable(false);
             $table->string('title')->nullable(false);
             $table->text('description')->nullable();
             $table->timestamps();
