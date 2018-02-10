@@ -10,7 +10,6 @@ class AdvertisementController extends Controller
 {
     public function viewCreateForm(Request $request, User $user)
     {
-        //$this->authorize('viewcreateform', 'AdvertisementPolicy');
         if (auth()->user()) {
             return view('advertisement.create');
         } else {
