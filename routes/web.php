@@ -31,10 +31,11 @@ Route::get('/register/verify/{confirmationCode}', 'Auth\RegisterController@verif
 // message/info for fresh registered user to check/confirm email after registration
 Route::get('/register/werconfirmation', 'Auth\RegisterController@waitingEmailRegistrationConfirmation');
 
-// create advertisement
+/* Advertisement */
+// view create form for advertisement
 Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('advertisementcreate');
-//Route::get('/oglasi/create', function () {
-//    return view('advertisement.create');
-//})->name('advertisementcreate');
+// save advertisement
+Route::post('/oglasi/create', 'AdvertisementController@ssaveForm')->name('advertisementcreate');
+
 
 
