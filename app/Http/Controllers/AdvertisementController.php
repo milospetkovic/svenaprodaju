@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Entity\Advertisement;
 use App\Model\Managers\AdvertisementManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -52,12 +53,16 @@ class AdvertisementController extends Controller
     {
         if (auth()->user())
         {
-            return view('advertisement.list');
+            // count advertisements for logged user
+            $data['my_ads_count'] = Advertisement::where('user_id', auth()->user()->id)->count();
+
+            //var_dump($data);
+
+            return view('advertisement.list', $data);
         } else {
             $data['login_warning'] = 'Morate biti ulogovani da biste videli svoje oglase';
             return view('auth.login', $data);
         }
-
     }
 
     /**
