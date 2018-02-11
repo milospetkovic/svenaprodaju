@@ -2,8 +2,9 @@
 
 namespace App\Model\Managers;
 
-use App\Model\Entity;
+use App\Model\Entity\Advertisement;
 
-class AdvertisementManager extends Entity {
+class AdvertisementManager extends Advertisement
+{
 
 }

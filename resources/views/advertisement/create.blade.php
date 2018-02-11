@@ -11,6 +11,9 @@
 
             <div class="panel-body">
                 <form action="{{ action('AdvertisementController@viewCreateForm') }}" method="post" class="form-horizontal">
+
+                    {{ csrf_field() }}
+
                     <div class="">
                         <label for="title">Naziv oglasa</label>
                         <input placeholder="npr. Laptop ili Kosilica 4x4..." type="text" name="title" id="title">

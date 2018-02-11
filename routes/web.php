@@ -35,7 +35,7 @@ Route::get('/register/werconfirmation', 'Auth\RegisterController@waitingEmailReg
 // view create form for advertisement
 Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('advertisementcreate');
 // save advertisement
-Route::post('/oglasi/create', 'AdvertisementController@ssaveForm')->name('advertisementcreate');
+Route::post('/oglasi/create', 'AdvertisementController@saveForm')->name('advertisementcreate');
 
 
 
