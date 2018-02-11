@@ -72,14 +72,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-3 col-md-2 sidebar">
-                        {{-- @if (auth()->user()) --}}
-                            <ul class="nav nav-sidebar">
-                                {{--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>--}}
-                                <li><a href="{{ route('advertisementcreate') }}">Postavi oglas</a></li>
-                                <li><a href="#">Analytics</a></li>
-                                <li><a href="#">Export</a></li>
-                            </ul>
-                    {{-- @endif --}}
+                        <ul class="nav nav-sidebar">
+                            {{--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>--}}
+                            <li><a href="{{ route('advertisementcreate') }}">Postavi oglas</a></li>
+                            @if (auth()->user())
+                                <li><a href="{{ route('myadvertisementlist') }}">Moji oglasi</a></li>
+                            @endif
+                        </ul>
                     </div>
 
                     @yield('content')

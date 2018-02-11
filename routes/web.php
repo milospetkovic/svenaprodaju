@@ -37,5 +37,7 @@ Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('ad
 // save advertisement
 Route::post('/oglasi/create', 'AdvertisementController@saveForm')->name('advertisementcreate');
 
+Route::get('/mojioglasi/list', 'AdvertisementController@myAdvertisementList')->name('myadvertisementlist');
+
 
 

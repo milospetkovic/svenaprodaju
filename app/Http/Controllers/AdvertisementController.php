@@ -28,14 +28,17 @@ class AdvertisementController extends Controller
 
     public function saveForm(Request $request)
     {
-        if (auth()->user()) {
-            //$this->advertisementManager->title = $request->post('title');
+        if (auth()->user())
+        {
+            // validate request
             $this->validator($request->all())->validate();
 
+            // populate properties
             $this->advertisementManager->user_id = auth()->user()->id;
             $this->advertisementManager->title = $request->post('title');
             $this->advertisementManager->description = $request->post('description');
 
+            // save advertisement
             $this->advertisementManager->save();
 
             return view('advertisement.create');
@@ -43,6 +46,18 @@ class AdvertisementController extends Controller
             $data['login_warning'] = 'Morate biti ulogovani da biste kreirali oglas';
             return view('auth.login', $data);
         }
+    }
+
+    public function myAdvertisementList(Request $request)
+    {
+        if (auth()->user())
+        {
+            return view('advertisement.list');
+        } else {
+            $data['login_warning'] = 'Morate biti ulogovani da biste videli svoje oglase';
+            return view('auth.login', $data);
+        }
+
     }
 
     /**
