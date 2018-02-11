@@ -32,7 +32,7 @@ class AdvertisementController extends Controller
             //$this->advertisementManager->title = $request->post('title');
             $this->validator($request->all())->validate();
 
-            $this->advertisementManager->user_id = auth()->login()->id;
+            $this->advertisementManager->user_id = auth()->user()->id;
             $this->advertisementManager->title = $request->post('title');
             $this->advertisementManager->description = $request->post('description');
 
