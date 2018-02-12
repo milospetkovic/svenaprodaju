@@ -28,7 +28,7 @@
                     </div>
                     --}}
                     <div class="media-body">
-                        <a href="{{ route('') }}">
+                        <a href="{{ action('AdvertisementController@viewAdvertisement', $my_ad->id) }}">
                             <h4 class="media-heading">{{ $my_ad->title }}</h4>
                             <p>{{ $my_ad->description }}</p>
                         </a>

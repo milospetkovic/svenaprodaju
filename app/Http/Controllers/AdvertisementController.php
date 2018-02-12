@@ -66,6 +66,14 @@ class AdvertisementController extends Controller
         }
     }
 
+    public function viewAdvertisement(Request $request, $advID)
+    {
+        $data['adv'] = Advertisement::findOrFail($advID);
+            // var_dump($data['my_ads']);
+
+            return view('advertisement.view', $data);
+    }
+
     /**
      * Validator for saving advertisement request
      *
