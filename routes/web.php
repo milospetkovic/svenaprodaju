@@ -36,7 +36,9 @@ Route::get('/register/werconfirmation', 'Auth\RegisterController@waitingEmailReg
 Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('advertisementcreate');
 // save advertisement
 Route::post('/oglasi/create', 'AdvertisementController@saveForm')->name('advertisementcreate');
-
+// view advertisement
+Route::get('/oglasi/view/{id}/{advslug?}', 'AdvertisementController@viewAdvertisement')->name('advertisementview');
+// view list of my advertisement
 Route::get('/mojioglasi/list', 'AdvertisementController@myAdvertisementList')->name('myadvertisementlist');
 
 

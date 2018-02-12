@@ -71,7 +71,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-3 col-md-2 sidebar">
+                    <div class="col-sm-3 col-md-2 sidebarfaf">
                         <ul class="nav nav-sidebar">
                             {{--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>--}}
                             <li><a href="{{ route('advertisementcreate') }}">Postavi oglas</a></li>
@@ -81,8 +81,9 @@
                         </ul>
                     </div>
 
-                    @yield('content')
-
+                    <div class="col-sm-9 col-md-10">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </div>

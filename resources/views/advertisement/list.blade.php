@@ -14,7 +14,31 @@
 
     @else
 
-         Prikazi ovde oglase...
+        <hr>
+
+        <ul class="media-list">
+
+            @foreach($my_ads as $my_ad)
+                <li class="media">
+                    {{--
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" src="..." alt="...">
+                        </a>
+                    </div>
+                    --}}
+                    <div class="media-body">
+                        <a href="{{ route('') }}">
+                            <h4 class="media-heading">{{ $my_ad->title }}</h4>
+                            <p>{{ $my_ad->description }}</p>
+                        </a>
+                    </div>
+
+                    <hr>
+
+                </li>
+            @endforeach
+        </ul>
 
     @endif
 
