@@ -10,7 +10,9 @@
             </div>
 
             <div class="panel-body">
-                    ovde sadrzaj
+                <h3>{{ $adv->title }}</h3>
+
+                <p>{{ $adv->description }}</p>
             </div>
 
         </div>

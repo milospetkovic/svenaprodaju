@@ -55,7 +55,7 @@ class AdvertisementController extends Controller
         {
             // count advertisements for logged user
             $data['my_ads_count'] = Advertisement::where('user_id', auth()->user()->id)->count();
-            $data['my_ads'] = Advertisement::where('user_id', auth()->user()->id)->get();
+            $data['my_ads'] = Advertisement::where('user_id', auth()->user()->id)->paginate(10);
 
            // var_dump($data['my_ads']);
 

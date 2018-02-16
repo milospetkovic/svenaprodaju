@@ -14,6 +14,10 @@
 
     @else
 
+        <div class="pull-right">
+            {{ $my_ads->links() }}
+        </div>
+
         <hr>
 
         <ul class="media-list">
