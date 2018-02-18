@@ -43,3 +43,8 @@ Route::get('/mojioglasi/list', 'AdvertisementController@myAdvertisementList')->n
 
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
