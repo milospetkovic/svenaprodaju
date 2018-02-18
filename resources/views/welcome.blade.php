@@ -38,6 +38,11 @@
             <div class="container-fluid">
                 <div class="navbar-header-custom">
                     <div id="navbar" class="navbar-collapse collapse">
+
+
+                        {!!  menu('portal', 'bootstrap') !!}
+
+
                         @if (Route::has('login'))
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 @auth
