@@ -40,7 +40,7 @@
                     <div id="navbar" class="navbar-collapse collapse">
 
 
-                        {!!  menu('portal', 'bootstrap') !!}
+                        {!!  menu('portal', 'menu.topmenu') !!}
 
 
                         @if (Route::has('login'))
