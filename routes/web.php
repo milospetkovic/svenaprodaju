@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +41,11 @@ Route::post('/oglasi/create', 'AdvertisementController@saveForm')->name('adverti
 Route::get('/oglasi/view/{id}/{advslug?}', 'AdvertisementController@viewAdvertisement')->name('advertisementview');
 // view list of my advertisement
 Route::get('/mojioglasi/list', 'AdvertisementController@myAdvertisementList')->name('myadvertisementlist');
+// view page on the frontend (page defined in admin)
+Route::get('/page/{id}/{pageslug?}', 'PageController@viewPage')->name('viewpage');
 
 
-
-
-
+// voyager routes (admin interface)
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
