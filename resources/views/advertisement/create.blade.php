@@ -119,10 +119,10 @@
                                 </td>
                                 <td>
                                     <select class="form-control">
-                                        <option></option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
                                 </td>
                             </tr>
@@ -133,11 +133,64 @@
                                 </td>
                                 <td>
                                     <select class="form-control">
-                                        <option></option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
                                     </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                </td>
+                                <td>
+                                    <div class="bg-info" style="padding: 10px 0 10px 10px; border: 1px solid #ddd;">
+                                        Vaši kontakt podaci u vezi oglasa
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                    <label for="place">Mesto*: </label>
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option value=""></option>
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                    <label for="description">Kontakt osoba*: </label>
+                                </td>                               <td>
+                                    <input type="text" name="contact_name" id="contact_name" value="{{ Auth::user()->first_name.' '.Auth::user()->last_name }}">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                    <label for="description">Kontakt telefon: </label>
+                                </td>
+                                <td>
+                                    <input type="text" name="contact_phone" id="contact_phone" value="{{ Auth::user()->telephone }}">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                </td>
+                                <td>
+                                    <div>
+                                        <label>
+                                            <input type="checkbox" name="accepted_publish_condition" value="1" id="accepted_publish_condition"> Prihvatam <a href="#nogo">pravila i uslove</a> za oglašavanje na portalu svezaprodaju.com
+                                        </label>
+                                    </div>
                                 </td>
                             </tr>
 
