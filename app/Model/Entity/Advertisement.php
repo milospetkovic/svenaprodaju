@@ -25,7 +25,10 @@ class Advertisement extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'title', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'description', 'fk_type', 'fk_category',
+        'fk_group', 'fk_condition', 'sell_or_buy', 'price', 'fk_price_currency',
+        'fk_price_type', 'accept_replacement', 'accepted_publish_condition',
+        'fk_place', 'contact_name', 'contact_phone'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -17,11 +17,10 @@ class AddColumnsToAdvertisementTable extends Migration
     {
         Schema::table($this->table, function(Blueprint $table)
         {
-            $table->integer('fk_type')->nullable(false);
+            $table->integer('sell_or_buy')->nullable(false);
             $table->integer('fk_category')->nullable(true);
             $table->integer('fk_group')->nullable(true);
             $table->integer('fk_condition')->nullable(true);
-            $table->integer('sell_or_buy')->nullable(true);
             $table->double('price')->nullable(true);
             $table->integer('fk_price_currency')->nullable(true);
             $table->double('fk_price_type')->nullable(true);
@@ -41,11 +40,10 @@ class AddColumnsToAdvertisementTable extends Migration
     public function down()
     {
         Schema::table($this->table, function (Blueprint $table) {
-            $table->dropColumn('fk_type');
+            $table->dropColumn('sell_or_buy');
             $table->dropColumn('fk_category');
             $table->dropColumn('fk_group');
             $table->dropColumn('fk_condition');
-            $table->dropColumn('sell_or_buy');
             $table->dropColumn('price');
             $table->dropColumn('fk_price_currency');
             $table->dropColumn('fk_price_type');

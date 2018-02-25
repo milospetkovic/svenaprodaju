@@ -56,9 +56,6 @@ class AdvertisementController extends Controller
             // count advertisements for logged user
             $data['my_ads_count'] = Advertisement::where('user_id', auth()->user()->id)->count();
             $data['my_ads'] = Advertisement::where('user_id', auth()->user()->id)->paginate(10);
-
-           // var_dump($data['my_ads']);
-
             return view('advertisement.list', $data);
         } else {
             $data['login_warning'] = 'Morate biti ulogovani da biste videli svoje oglase';
@@ -69,9 +66,7 @@ class AdvertisementController extends Controller
     public function viewAdvertisement(Request $request, $advID)
     {
         $data['adv'] = Advertisement::findOrFail($advID);
-            // var_dump($data['my_ads']);
-
-            return view('advertisement.view', $data);
+        return view('advertisement.view', $data);
     }
 
     /**
@@ -84,7 +79,19 @@ class AdvertisementController extends Controller
     {
         return Validator::make($data, [
             'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255'
+            'description' => 'required|string|max:255',
+            'sell_or_buy' => 'required|integer|between:1,2',
+            'fk_category' => 'required|integer|max:5',
+            'fk_group' => 'required|integer|max:5',
+            'fk_condition' => 'required|integer|max:5',
+            'price' => 'numeric',
+            'fk_price_currency' => 'string|max:12',
+            'fk_price_type' => 'numeric',
+            'accept_replacement' => 'integer',
+            'accepted_publish_condition' => 'integer',
+            'fk_place' => 'required|integer|max:5',
+            'contact_name' => 'required|string|max:255',
+            'contact_phone' => 'string'
         ]);
     }
 }

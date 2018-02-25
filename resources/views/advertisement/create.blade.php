@@ -11,6 +11,16 @@
 
             <div class="panel-body">
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ action('AdvertisementController@viewCreateForm') }}" method="post" class="form-horizontal">
 
                     {{ csrf_field() }}
@@ -34,11 +44,11 @@
                                 </td>
                                 <td>
                                     <label>
-                                        <input type="radio" name="fk_type" id="fk_type" value="1" checked> Prodajem
+                                        <input type="radio" name="sell_or_buy" id="fk_type" value="1" checked> Prodajem
                                     </label>
 
                                     <label style="margin-left: 10px;">
-                                        <input type="radio" name="fk_type" id="fk_type" value="2"> Kupujem
+                                        <input type="radio" name="sell_or_buy" id="fk_type" value="2"> Kupujem
                                     </label>
                                 </td>
                             </tr>
@@ -68,38 +78,25 @@
                                 </td>
                             </tr>
 
-                            {{--
-                            <tr>
-                                <td class="text-right">
-                                    <label for="price">Prihvatam zamenu: </label>
-                                </td>
-                                <td>
-                                    <label>
-                                        <input type="checkbox" name="accept_replacement" value="1" id="accept_replacement">
-                                    </label>
-                                </td>
-                            </tr>
-                            --}}
-
                             <tr>
                                 <td class="text-right">
                                     <label for="description">Stanje*: </label>
                                 </td>
                                 <td>
                                     <label>
-                                        <input type="radio" name="fk_condition" id="fk_condition" value="1" checked> Polovno (korišćeno)
+                                        <input type="radio" name="fk_condition" value="1" checked> Polovno (korišćeno)
                                     </label>
 
                                     <label style="margin-left: 10px;">
-                                        <input type="radio" name="fk_condition" id="fk_condition" value="2"> Novo
+                                        <input type="radio" name="fk_condition" value="2"> Novo
                                     </label>
 
                                     <label style="margin-left: 10px;">
-                                        <input type="radio" name="fk_condition" id="fk_condition" value="3"> Neispravno (oštećeno)
+                                        <input type="radio" name="fk_condition" value="3"> Neispravno (oštećeno)
                                     </label>
 
                                     <label style="margin-left: 10px;">
-                                        <input type="radio" name="fk_condition" id="fk_condition" value="4"> Nedefinisano
+                                        <input type="radio" name="fk_condition" value="4"> Nedefinisano
                                     </label>
                                 </td>
                             </tr>
@@ -118,7 +115,7 @@
                                     <label for="description">Kategorija: </label>
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select name="fk_category" class="form-control">
                                         <option value=""></option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -132,7 +129,7 @@
                                     <label for="description">Grupa: </label>
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select name="fk_group" class="form-control">
                                         <option value=""></option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -146,7 +143,7 @@
                                 </td>
                                 <td>
                                     <div class="bg-info" style="padding: 10px 0 10px 10px; border: 1px solid #ddd;">
-                                        Vaši kontakt podaci u vezi oglasa
+                                        Vaši kontakt podaci za oglas
                                     </div>
                                 </td>
                             </tr>
@@ -156,7 +153,7 @@
                                     <label for="place">Mesto*: </label>
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select name="fk_place" class="form-control">
                                         <option value=""></option>
                                         <option value="1" selected>1</option>
                                         <option value="2">2</option>
