@@ -31,6 +31,8 @@ class AdvertisementController extends Controller
     {
         if (auth()->user())
         {
+
+
             // validate request
             $this->validator($request->all())->validate();
 
@@ -38,9 +40,21 @@ class AdvertisementController extends Controller
             $this->advertisementManager->user_id = auth()->user()->id;
             $this->advertisementManager->title = $request->post('title');
             $this->advertisementManager->description = $request->post('description');
+            $this->advertisementManager->fk_category = $request->post('fk_category');
+            $this->advertisementManager->fk_group = $request->post('fk_group');
+            $this->advertisementManager->fk_condition = $request->post('fk_condition');
+            $this->advertisementManager->sell_or_buy = $request->post('sell_or_buy');
+            $this->advertisementManager->price = $request->post('price');
+            $this->advertisementManager->fk_price_currency = $request->post('fk_price_currency');
+            $this->advertisementManager->fk_price_type = $request->post('fk_price_type');
+            $this->advertisementManager->accept_replacement = $request->post('accept_replacement');
+            $this->advertisementManager->accepted_publish_condition = $request->post('accepted_publish_condition');
+            $this->advertisementManager->fk_place = $request->post('fk_place');
+            $this->advertisementManager->contact_name = $request->post('contact_name');
+            $this->advertisementManager->contact_phone = $request->post('contact_phone');
 
             // save advertisement
-            $this->advertisementManager->save();
+            $result = $this->advertisementManager->save();
 
             return view('advertisement.create');
         } else {

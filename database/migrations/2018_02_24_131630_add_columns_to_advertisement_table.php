@@ -22,7 +22,7 @@ class AddColumnsToAdvertisementTable extends Migration
             $table->integer('fk_group')->nullable(true);
             $table->integer('fk_condition')->nullable(true);
             $table->double('price')->nullable(true);
-            $table->integer('fk_price_currency')->nullable(true);
+            $table->string('fk_price_currency')->nullable(false);
             $table->double('fk_price_type')->nullable(true);
             $table->tinyInteger('accept_replacement')->nullable(true);
             $table->tinyInteger('accepted_publish_condition')->nullable(false);
