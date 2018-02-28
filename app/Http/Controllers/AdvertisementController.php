@@ -31,8 +31,6 @@ class AdvertisementController extends Controller
     {
         if (auth()->user())
         {
-
-
             // validate request
             $this->validator($request->all())->validate();
 
