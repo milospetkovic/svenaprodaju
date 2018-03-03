@@ -21,7 +21,7 @@
                     </div>
                 @endif
 
-                <form action="{{ action('AdvertisementController@viewCreateForm') }}" method="post" class="form-horizontal">
+                <form action="{{ action('AdvertisementController@viewCreateForm') }}" method="post" enctype="multipart/form-data"  class="form-horizontal">
 
                     {{ csrf_field() }}
 
@@ -135,6 +135,15 @@
                                         <option value="2" {{ old('fk_group')=="2" ? 'selected' : '' }}>2</option>
                                         <option value="3" {{ old('fk_group')=="3" ? 'selected' : '' }}>3</option>
                                     </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-right">
+                                    <label for="description">Slike: </label>
+                                </td>
+                                <td>
+                                    @include('components.dropzone', ['title' => 'Postavljanje slika', 'grid' => ''])
                                 </td>
                             </tr>
 
