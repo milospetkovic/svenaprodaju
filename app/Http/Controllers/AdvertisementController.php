@@ -106,4 +106,17 @@ class AdvertisementController extends Controller
             'contact_phone' => 'string'
         ]);
     }
+
+    /**
+     * Save uploaded images to temp folder when creating advertisement
+     *
+     * @param Request $request
+     */
+    public function tempUpload(Request $request)
+    {
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName();
+
+        $file->storeAs($this->tempImageFolder.'/'.auth()->id(), $filename);
+    }
 }

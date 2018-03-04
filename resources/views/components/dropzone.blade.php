@@ -30,19 +30,19 @@
 
             $("#dropzone").dropzone({
 
-                url: "/assistant/upload",
-                addRemoveLinks: true,
-                createImageThumbnails: false,
+                url: "/oglasi/upload",
+                addRemoveLinks: false,
+                createImageThumbnails: true,
 
                 init:function() {
-                    this.on("removedfile", function(file) {
-                        $.ajax({
-                            type: 'POST',
-                            url: '/assistant/removeupload',
-                            data: {filename: file.name, _token: $('#csrf-token').val()},
-                            dataType: 'html'
-                        });
-                    });
+                    // this.on("removedfile", function(file) {
+                    //     $.ajax({
+                    //         type: 'POST',
+                    //         url: '/oglasi/create/removeupload',
+                    //         data: {filename: file.name, _token: $('#csrf-token').val()},
+                    //         dataType: 'html'
+                    //     });
+                    // });
                 }
             });
         });

@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "axios": "^0.17",
+        "bootstrap": "^3.3.2",
         "bootstrap-sass": "^3.3.7",
         "cross-env": "^5.1",
         "jquery": "^3.2",
@@ -19,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "bootstrap": "^3.3.2",
         "dropzone": "^5.3.0",
         "gulp": "^3.9.1",
         "toastr": "^2.1.4"
