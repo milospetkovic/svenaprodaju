@@ -30,9 +30,19 @@
 
             $("#dropzone").dropzone({
 
+                // translations
+                dictDefaultMessage: "Kliknite ovde da biste dodali ili prevukli slike za upload",
+                dictCancelUpload: "Poništi upload",
+                dictInvalidFileType: "Nedozvoljen format slike",
+                dictFileTooBig: "Veličina fajla premašuje dozvoljenu veličinu od 2MB",
+                dictRemoveFile: "Ukloni fajl",
+                dictMaxFilesExceeded: "Dostignut je maksimum broja slika za upload. Obrišite višak (ili nevalidne ako postoje - označene sa X znakom)",
+
                 url: "/oglasi/create/upload",
                 addRemoveLinks: true,
                 createImageThumbnails: true,
+                acceptedFiles: "image/jpeg,image/png,image/gif",
+                maxFiles: 2,
                 sending: function(file, xhr, formData) {
                     formData.append("_token", "{{ csrf_token() }}");
                 },
@@ -44,6 +54,9 @@
                             data: {filename: file.name, _token: "{{ csrf_token() }}"},
                             dataType: 'html'
                         });
+                    });
+                    this.on('error', function(file, response) {
+                        $(file.previewElement).find('.dz-error-message').text(response);
                     });
                 }
             });
