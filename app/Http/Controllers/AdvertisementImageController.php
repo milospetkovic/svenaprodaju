@@ -11,7 +11,7 @@ class AdvertisementImageController extends Controller
     //
     public function __construct()
     {
-        //die('pozvano!');
+
     }
 
 

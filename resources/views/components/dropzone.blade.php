@@ -33,7 +33,9 @@
                 url: "/oglasi/upload",
                 addRemoveLinks: false,
                 createImageThumbnails: true,
-
+                sending: function(file, xhr, formData) {
+                    formData.append("_token", "{{ csrf_token() }}");
+                },
                 init:function() {
                     // this.on("removedfile", function(file) {
                     //     $.ajax({

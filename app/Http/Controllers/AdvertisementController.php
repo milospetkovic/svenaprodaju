@@ -12,6 +12,8 @@ class AdvertisementController extends Controller
 {
     protected $advertisementManager;
 
+    protected $tempImageFolder = 'tempadvimages';
+
     public function __construct(AdvertisementManager $advertisementManager)
     {
         $this->advertisementManager = $advertisementManager;
