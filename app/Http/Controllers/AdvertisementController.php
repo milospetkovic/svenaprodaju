@@ -12,8 +12,6 @@ class AdvertisementController extends Controller
 {
     protected $advertisementManager;
 
-    protected $tempImageFolder = 'tempadvimages';
-
     public function __construct(AdvertisementManager $advertisementManager)
     {
         $this->advertisementManager = $advertisementManager;
@@ -109,16 +107,4 @@ class AdvertisementController extends Controller
         ]);
     }
 
-    /**
-     * Save uploaded images to temp folder when creating advertisement
-     *
-     * @param Request $request
-     */
-    public function tempUpload(Request $request)
-    {
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName();
-
-        $file->storeAs($this->tempImageFolder.'/'.auth()->id(), $filename);
-    }
 }

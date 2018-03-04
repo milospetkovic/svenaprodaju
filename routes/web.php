@@ -38,7 +38,7 @@ Route::get('/oglasi/create', 'AdvertisementController@viewCreateForm')->name('ad
 // save advertisement
 Route::post('/oglasi/create', 'AdvertisementController@saveForm')->name('advertisementcreate');
 // ajax advertisement multiple images temp upload
-Route::post('/oglasi/upload', 'AdvertisementController@tempUpload');
+Route::post('/oglasi/create/upload', 'AdvertisementImageController@tempUpload');
 // ajax remove single uploaded file
 Route::post('/oglasi/create/removeupload', 'AdvertisementImageController@removeTempUpload');
 // view advertisement

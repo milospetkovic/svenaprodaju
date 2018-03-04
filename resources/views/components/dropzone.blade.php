@@ -30,21 +30,21 @@
 
             $("#dropzone").dropzone({
 
-                url: "/oglasi/upload",
-                addRemoveLinks: false,
+                url: "/oglasi/create/upload",
+                addRemoveLinks: true,
                 createImageThumbnails: true,
                 sending: function(file, xhr, formData) {
                     formData.append("_token", "{{ csrf_token() }}");
                 },
                 init:function() {
-                    // this.on("removedfile", function(file) {
-                    //     $.ajax({
-                    //         type: 'POST',
-                    //         url: '/oglasi/create/removeupload',
-                    //         data: {filename: file.name, _token: $('#csrf-token').val()},
-                    //         dataType: 'html'
-                    //     });
-                    // });
+                    this.on("removedfile", function(file) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/oglasi/create/removeupload',
+                            data: {filename: file.name, _token: "{{ csrf_token() }}"},
+                            dataType: 'html'
+                        });
+                    });
                 }
             });
         });
