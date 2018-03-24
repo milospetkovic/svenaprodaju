@@ -20,3 +20,4 @@ yarn-error.log
 /.metadata
 /config/ide-helper.php
 /config/trustedproxy.php
+/public

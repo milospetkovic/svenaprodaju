@@ -67,7 +67,11 @@ class AdvertisementController extends Controller
         {
             // count advertisements for logged user
             $data['my_ads_count'] = Advertisement::where('user_id', auth()->user()->id)->count();
-            $data['my_ads'] = Advertisement::where('user_id', auth()->user()->id)->paginate(10);
+
+            // get advertisements
+            $data['my_ads'] = Advertisement::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
+
+            // return data to view
             return view('advertisement.list', $data);
         } else {
             $data['login_warning'] = 'Morate biti ulogovani da biste videli svoje oglase';
