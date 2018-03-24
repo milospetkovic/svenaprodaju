@@ -100,7 +100,7 @@ class AdvertisementController extends Controller
             'fk_price_currency' => 'string|max:12',
             'fk_price_type' => 'numeric',
             'accept_replacement' => 'integer',
-            'accepted_publish_condition' => 'integer',
+            'accepted_publish_condition' => 'required|integer',
             'fk_place' => 'required|integer|max:5',
             'contact_name' => 'required|string|max:255',
             'contact_phone' => 'string'

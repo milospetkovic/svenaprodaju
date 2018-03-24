@@ -46,3 +46,7 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.dropzone .dz-preview .dz-error-message {
+    top: 150px!important;
+}
