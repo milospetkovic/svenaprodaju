@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="/css/dashboard.css" />
         {{--<link rel="stylesheet" href="/css/app.css" />--}}
         <link rel="stylesheet" href="/css/elitasoft.css" />
+        <link rel="stylesheet" href="/css/toastr.min.css" />
 
         @stack('vue-styles')
 
@@ -95,9 +96,12 @@
 
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script src="/js/app.js" type="text/javascript"></script>
 <script src="/js/elitasoft.js" type="text/javascript"></script>
+
+@include('jsincludes.toastr')
+@include('jsincludes.flash')
 
 @yield('pagescript')
 @yield('scripts')

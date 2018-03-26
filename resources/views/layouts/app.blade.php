@@ -23,15 +23,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/elitasoft.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" />
 
     @stack('vue-styles')
 
 </head>
 <body>
 
-    @include('flash::message')
+    {{-- @include('flash::message') --}}
 
     <div id="app">
+
+        {{-- @include('layouts.flash') --}}
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -96,9 +100,12 @@
     <!-- Scripts -->
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/elitasoft.js') }}></script>
+
+    @include('jsincludes.toastr')
+    @include('jsincludes.flash')
 
     @yield('pagescript')
     @yield('scripts')

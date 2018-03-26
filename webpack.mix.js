@@ -15,9 +15,9 @@ mix.copy('resources/assets/js/app.js', 'public/js/');
 mix.copy('resources/assets/js/bootstrap.js', 'public/js/');
 mix.copy('resources/assets/js/elitasoft.js', 'public/js/');
 mix.copy('node_modules/dropzone/dist/dropzone.js', 'public/js/');
+mix.copy('resources/assets/js/toastr.min.js', 'public/js/');
 
 
 mix.copy('resources/assets/css/dashboard.css', 'public/css/');
 mix.copy('node_modules/dropzone/dist/dropzone.css', 'public/css/');
-
-
+mix.copy('resources/assets/css/toastr.min.css', 'public/css/');
