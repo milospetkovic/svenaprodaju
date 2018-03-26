@@ -63,7 +63,8 @@ class AdvertisementController extends Controller
 
     public function myAdvertisementList(Request $request)
     {
-        flash("ActionSuccess","success");
+        flash("TESTIRANJE","warning");
+        //var_dump($request->session());
 
         if (auth()->user())
         {
