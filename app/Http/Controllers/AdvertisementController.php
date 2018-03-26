@@ -63,6 +63,8 @@ class AdvertisementController extends Controller
 
     public function myAdvertisementList(Request $request)
     {
+        flash("ActionSuccess","success");
+
         if (auth()->user())
         {
             // count advertisements for logged user
